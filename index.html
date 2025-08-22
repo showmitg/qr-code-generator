@@ -15,6 +15,7 @@
             <img src="" id="qrimg">
         </div>
         <button onclick="generateQR()">Generate QR code</button>
+        <button onclick="downloadQR()">Download QR</button>
     </div>
 
     <script>
@@ -36,6 +37,19 @@
             }
 
         }
+        function downloadQR() {
+            if (qrimg.src) {
+                const link = document.createElement("a");
+                link.href = qrimg.src;
+                link.download = "qrcode.png";
+                link.click();
+            }
+        }
+        qrText.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                generateQR();
+            }
+        });
     </script>
 </body>
 
